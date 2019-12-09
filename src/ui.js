@@ -65,6 +65,10 @@ class UI {
 
         this.changeFormState('edit');
     }
+    //Clear id input
+    clearIdInput(){
+        this.idInput.value = '';
+    }
     //Change the form state
     changeFormState(type){
         if(type === 'edit'){
@@ -80,7 +84,16 @@ class UI {
             const formEnd = document.querySelector('.form-end');
             cardForm.insertBefore(button, formEnd);
         }else {
-            
+            this.postSubmit.textContent = 'Post it';
+            this.postSubmit.className = 'post-submit btn btn-primary btn-block';
+            //Remove cancel button
+            if(document.querySelector('.post-cancel')){
+                document.querySelector('.post-cancel').remove();
+            }
+            //Clear id from hidden field
+            this.clearIdInput();
+            //Clear text
+            this.clearFields();
         }
     }
 }
